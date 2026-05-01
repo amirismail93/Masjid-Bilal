@@ -99,7 +99,7 @@ export default async function Home() {
             <Link href="/contact">
               <Button
                 variant="outline"
-                className="border-white/30 text-white hover:bg-card/10 hover:text-white rounded-full px-7 h-12 text-base"
+                className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full px-7 h-12 text-base"
               >
                 <HandHelping className="size-4 mr-2" />
                 Get Involved
