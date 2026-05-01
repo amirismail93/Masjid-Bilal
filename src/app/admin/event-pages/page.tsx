@@ -20,6 +20,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import type { EventPage, RegistrationField } from "@/types/database";
+import { ImageUpload } from "@/components/admin/image-upload";
 
 const inputClass =
   "w-full rounded-xl border border-border bg-warm-white px-4 py-2.5 text-sm text-charcoal placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition-colors";
@@ -297,16 +298,11 @@ export default function EventPagesAdmin() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-medium text-muted-foreground mb-1">
-                  Banner Image URL (optional)
-                </label>
-                <input
+                <ImageUpload
+                  label="Banner Image (optional)"
                   value={editing.banner_image_url ?? ""}
-                  onChange={(e) =>
-                    updateField("banner_image_url", e.target.value)
-                  }
-                  placeholder="https://…"
-                  className={inputClass}
+                  onChange={(url) => updateField("banner_image_url", url)}
+                  folder="event-banners"
                 />
               </div>
               <div>

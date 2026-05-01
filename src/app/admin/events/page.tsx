@@ -1,11 +1,12 @@
 "use client";
 
 import { CrudPage, BoolBadge, Truncate } from "@/components/admin/crud-page";
+import { to12hr } from "@/lib/format-time";
 
 const columns = [
   { key: "title", label: "Title" },
   { key: "event_date", label: "Date" },
-  { key: "event_time", label: "Time" },
+  { key: "event_time", label: "Time", render: (v: unknown) => to12hr(v as string) },
   { key: "category", label: "Category" },
   { key: "is_featured", label: "Featured", render: BoolBadge },
   { key: "is_published", label: "Published", render: BoolBadge },
@@ -24,7 +25,7 @@ const fields = [
     options: ["Community", "Education", "Youth", "Sisters", "Fundraiser", "Interfaith", "Sports"],
     required: true,
   },
-  { key: "flyer_url", label: "Flyer URL", type: "url" as const },
+  { key: "flyer_url", label: "Event Flyer", type: "image" as const },
   { key: "rsvp_link", label: "RSVP Link", type: "url" as const },
   { key: "is_featured", label: "Featured event", type: "checkbox" as const },
   { key: "is_published", label: "Published", type: "checkbox" as const },

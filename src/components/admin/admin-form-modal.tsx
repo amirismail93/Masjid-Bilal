@@ -3,11 +3,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { X, Save } from "lucide-react";
+import { ImageUpload } from "./image-upload";
 
 export interface FieldDef {
   key: string;
   label: string;
-  type?: "text" | "email" | "date" | "time" | "textarea" | "select" | "checkbox" | "url" | "number";
+  type?: "text" | "email" | "date" | "time" | "textarea" | "select" | "checkbox" | "url" | "number" | "image";
   options?: string[];
   placeholder?: string;
   required?: boolean;
@@ -69,6 +70,18 @@ export function AdminFormModal({
                       {field.label}
                     </span>
                   </label>
+                );
+              }
+
+              if (field.type === "image") {
+                return (
+                  <div key={field.key}>
+                    <ImageUpload
+                      label={field.label + (field.required ? " *" : "")}
+                      value={(values[field.key] as string) ?? ""}
+                      onChange={(url) => onChange(field.key, url)}
+                    />
+                  </div>
                 );
               }
 

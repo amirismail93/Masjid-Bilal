@@ -1,11 +1,14 @@
 "use client";
 
 import { CrudPage } from "@/components/admin/crud-page";
+import { to12hr } from "@/lib/format-time";
+
+const TimeFmt = (v: unknown) => to12hr(v as string);
 
 const columns = [
   { key: "session_label", label: "Session" },
-  { key: "khutbah_time", label: "Khutbah" },
-  { key: "iqama_time", label: "Iqama" },
+  { key: "khutbah_time", label: "Khutbah", render: TimeFmt },
+  { key: "iqama_time", label: "Iqama", render: TimeFmt },
 ];
 
 const fields = [

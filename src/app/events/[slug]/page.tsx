@@ -5,6 +5,7 @@ import { EventRegistrationForm } from "@/components/event-registration-form";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import type { EventPage } from "@/types/database";
+import { to12hr } from "@/lib/format-time";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -61,7 +62,7 @@ export default async function EventPageRoute({ params }: Props) {
             {ep.event_time && (
               <span className="flex items-center gap-1.5">
                 <Clock className="size-4" />
-                {ep.event_time}
+                {to12hr(ep.event_time)}
               </span>
             )}
             {ep.location && (
@@ -113,7 +114,7 @@ export default async function EventPageRoute({ params }: Props) {
                         Time
                       </p>
                       <p className="text-sm font-semibold text-charcoal">
-                        {ep.event_time}
+                        {to12hr(ep.event_time)}
                       </p>
                     </div>
                   </div>

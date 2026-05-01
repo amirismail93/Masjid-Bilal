@@ -7,6 +7,7 @@ import { QiblaCompass } from "@/components/qibla-compass";
 import { LivePrayerGrid } from "@/components/live-prayer-grid";
 import { fetchTodayTimes, fetchMonthTimes } from "@/lib/masjidal";
 import { createClient } from "@/lib/supabase/server";
+import { to12hr } from "@/lib/format-time";
 import type { JumuahTime, RamadanSchedule } from "@/types/database";
 import {
   Download,
@@ -125,10 +126,10 @@ export default async function PrayerTimesPage() {
                               {jt.session_label}
                             </p>
                             <p className="font-heading text-2xl font-bold text-gold">
-                              {jt.khutbah_time}
+                              {to12hr(jt.khutbah_time)}
                             </p>
                             <p className="text-xs text-white/50 mt-0.5">
-                              Iqama {jt.iqama_time}
+                              Iqama {to12hr(jt.iqama_time)}
                             </p>
                           </div>
                         </div>
@@ -324,7 +325,7 @@ export default async function PrayerTimesPage() {
                         Qiyam al-Layl
                       </p>
                       <p className="font-heading text-2xl font-bold text-charcoal mb-1">
-                        {ramadanRows[0].qiyam_time}
+                        {to12hr(ramadanRows[0].qiyam_time)}
                       </p>
                       <p className="text-xs text-muted-foreground leading-snug">
                         Last 10 nights of Ramadan
