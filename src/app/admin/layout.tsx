@@ -1,0 +1,15 @@
+import { createClient } from "@/lib/supabase/server";
+import { AdminShell } from "@/components/admin/admin-shell";
+
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return <AdminShell user={user}>{children}</AdminShell>;
+}
